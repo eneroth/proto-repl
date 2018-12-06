@@ -6,6 +6,7 @@
       'submenu': [
         {'label': 'Start REPL from open project.clj/build.boot','command': 'proto-repl:toggle-current-project-clj'}
         {'label': 'Execute Block', 'command': 'proto-repl:execute-block'}
+        {'label': 'Inspect Block', 'command': 'proto-repl:inspect-block'}
         {'label': 'Load File', 'command': 'proto-repl:load-current-file'}
         {'label': 'Execute Selected Text', 'command': 'proto-repl:execute-selected-text'}
         {'label': 'Run Tests in This Namespace', 'command': 'proto-repl:run-tests-in-namespace'}

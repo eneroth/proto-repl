@@ -128,7 +128,9 @@ module.exports = ProtoRepl =
       'proto-repl:toggle-auto-scroll': => @toggleAutoScroll()
       'proto-repl:execute-selected-text': => @executeSelectedText()
       'proto-repl:execute-block': => @executeBlock()
+      'proto-repl:inspect-block': => @executeBlock({inspect: true})
       'proto-repl:execute-top-block': => @executeBlock({topLevel: true})
+      'proto-repl:inspect-top-block': => @executeBlock({topLevel: true, inspect: true})
       'proto-repl:execute-text-entered-in-repl': => @repl?.executeEnteredText()
       'proto-repl:load-current-file': => @loadCurrentFile()
       'proto-repl:refresh-namespaces': => @refreshNamespaces()
@@ -387,6 +389,9 @@ module.exports = ProtoRepl =
         options.inlineOptions =
           editor: editor
           range: range
+
+        if options.inspect
+          text = "(cognitect.rebl/inspect " + text + ")"
 
         @executeCodeInNs(text, options)
 
