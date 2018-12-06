@@ -391,7 +391,7 @@ module.exports = ProtoRepl =
           range: range
 
         if options.inspect
-          text = "(cognitect.rebl/inspect " + text + ")"
+          text = "(doto (let [s {::source '" + text + "} x " + text + "] (try (with-meta x s) (catch Exception _ (with-meta [x] s)))) cognitect.rebl/inspect)"
 
         @executeCodeInNs(text, options)
 
