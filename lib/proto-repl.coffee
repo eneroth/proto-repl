@@ -391,7 +391,8 @@ module.exports = ProtoRepl =
           range: range
 
         if options.inspect
-          text = "(doto (let [s {::source '" + text + "} x " + text + "] (try (with-meta x s) (catch Exception _ (with-meta [x] s)))) cognitect.rebl/inspect)"
+          text = "(let [value " + text + "] (when-let [value ((requiring-resolve 'clojure.datafy/datafy) value)] (cognitect.rebl/submit '" + text + " value)) value)"
+          # text = "(doto (let [s {::source '" + text + "} x " + text + "] (try (with-meta x s) (catch Exception _ (with-meta [x] s)))) cognitect.rebl/inspect)"
 
         @executeCodeInNs(text, options)
 
